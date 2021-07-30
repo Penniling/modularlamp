@@ -14,9 +14,9 @@ const io = socketio(server, {
 });
 
 const con = mysql.createConnection({
-    host: "localhost",
-    user: "test",
-    password: "123",
+    host: "192.168.2.135",
+    user: "root",
+    password: "1234",
     
 })
 

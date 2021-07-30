@@ -21,7 +21,7 @@ const con = mysql.createConnection({
 })
 
 require("./js/express/authentication")(app, con);
-require("./js/express/express")(app);
+require("./js/express/express")(app, express);
 require("./js/sql/sql")(con);
 require("./js/io/io")(io);
 

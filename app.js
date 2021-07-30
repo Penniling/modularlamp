@@ -3,8 +3,8 @@ const express = require("express");
 const mysql = require("mysql");
 const http = require("http");
 
-const server = http.createServer(app);
 const app = express();
+const server = http.createServer(app);
 
 const io = socketio(server, {
   cors: {

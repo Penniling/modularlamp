@@ -1,5 +1,5 @@
 module.exports = (app, con) => {
-    const Math = require("Math")
+    const Math = require("math")
 
     app.post("/login", (req, res) => {
         if (!validateCred(req.body)) {res.status(402); res.end(); return};

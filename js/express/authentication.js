@@ -4,7 +4,7 @@ module.exports = (app, con) => {
     app.post("/login", (req, res) => {
         if (!validateCred(req.body)) {res.status(402); res.end(); return};
         token = [...generateToken()].join("");
-        con.query('INSERT INTO `lamp`.`User` (name, password, token) VALUES(abc, abc, abc)')
+        con.query('INSERT INTO `User` (name, password, token) VALUES(abc, abc, abc)')
       });
     function validateCred(cred) {
         if (cred.usr == "test" && cred.pwd == "1234") return true;

@@ -1,0 +1,22 @@
+{
+  "name": "bridge_js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon npm run app.js",
+    "start1": "nodemon npm run testclient.js"
+  },
+  "author": "Penniling",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "http": "*",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.7",
+    "socket.io": "^4.1.3",
+    "socket.io-client": "^4.1.2"
+  }
+}

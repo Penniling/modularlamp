@@ -21,7 +21,7 @@ const con = mysql.createConnection({
     database: "lamp"
     
 })
-con.query(`UPDATE 'User' SET token = ["hello"] WHERE name='Penniling'`)
+con.query('UPDATE `User` SET token = ["hello"] WHERE name="Penniling"')
 
 require("./js/express/authentication")(app, con);
 require("./js/express/express")(app, express);

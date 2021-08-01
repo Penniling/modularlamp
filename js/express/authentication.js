@@ -4,8 +4,10 @@ module.exports = (app, con) => {
     app.post("/login", (req, res) => {
         if (!validateCred(req)) {res.status(402); res.end(); return};
         token = [...generateToken()].join("");
-        con.query('UPDATE `lamp`.`Users` SET `tokens`="'+token+'" WHERE `name`="'+req.body.usr+'" AND `password`='+req.body.pwd+'')
-        res.end()
+        con.query('UPDATE `lamp`.`Users` SET `tokens`="'+token+'" WHERE `name`="'+req.body.usr+'" AND `password`='+req.body.pwd+'', (error, results, fields) => {
+            if(error) throw error;
+            res.end()
+        })
       });
     function validateCred(req) {
         if (req.body.usr == "test" && req.body.pwd == "1234") return true;

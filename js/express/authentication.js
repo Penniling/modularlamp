@@ -4,7 +4,6 @@ module.exports = (app, con) => {
     app.post("/login", (req, res) => {
         if (!validateCred(req.body)) {res.status(402); res.end(); return};
         token = [...generateToken()].join("");
-        con.query(`UPDATE 'User' SET token = [${token}] WHERE name='Penniling'`)
       });
     function validateCred(cred) {
         if (cred.usr == "test" && cred.pwd == "1234") return true;

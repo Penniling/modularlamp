@@ -31,4 +31,4 @@ require("./js/express/express")(app, express);
 require("./js/sql/sql")(con);
 require("./js/io/io")(io);
 
-server.listen(8080, "192.168.2.135");
+server.listen(8080, "0.0.0.0");

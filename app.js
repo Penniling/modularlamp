@@ -27,4 +27,4 @@ require("./js/express/express")(app, express);
 require("./js/sql/sql")(con);
 require("./js/io/io")(io);
 
-server.listen(3000, "192.168.2.135");
+server.listen(host= "192.168.2.135");

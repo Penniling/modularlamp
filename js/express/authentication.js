@@ -4,10 +4,10 @@ module.exports = (app, con) => {
     app.post("/login", (req, res) => {
         if (!validateCred(req.body)) {res.status(402); res.end(); return};
         token = [...generateToken()].join("");
-        con.query('UPDATE `lamp`.`Users` SET `tokens`="'+token+'" WHERE `name`="'+cred.usr+'" AND `password`='+cred.pwd+'')
+        con.query('UPDATE `lamp`.`Users` SET `tokens`="'+token+'" WHERE `name`="'+req.cred.usr+'" AND `password`='+req.cred.pwd+'')
       });
     function validateCred(cred) {
-        if (cred.usr == "test" && cred.pwd == "1234") return true;
+        if (req.cred.usr == "test" && req.cred.pwd == "1234") return true;
     }
 
     function* generateToken() {

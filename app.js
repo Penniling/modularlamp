@@ -7,6 +7,10 @@ require("dotenv").config();
 const app = express();
 const server = http.createServer(app);
 
+app.get("/", (req, res) => {
+  res.send("hello")
+})
+
 const io = socketio(server, {
   cors: {
     origin: "*",

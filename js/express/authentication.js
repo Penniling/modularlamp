@@ -2,12 +2,12 @@ module.exports = (app, con) => {
     const Math = require("math")
 
     app.post("/login", (req, res) => {
-        if (!validateCred(req.body)) {res.status(402); res.end(); return};
+        if (!validateCred(req)) {res.status(402); res.end(); return};
         token = [...generateToken()].join("");
-        con.query('UPDATE `lamp`.`Users` SET `tokens`="'+token+'" WHERE `name`="'+req.cred.usr+'" AND `password`='+req.cred.pwd+'')
+        con.query('UPDATE `lamp`.`Users` SET `tokens`="'+token+'" WHERE `name`="'+req.body.usr+'" AND `password`='+req.body.pwd+'')
       });
-    function validateCred(cred) {
-        if (req.cred.usr == "test" && req.cred.pwd == "1234") return true;
+    function validateCred(req) {
+        if (req.body.usr == "test" && req.body.pwd == "1234") return true;
     }
 
     function* generateToken() {

@@ -4,7 +4,7 @@ module.exports = (app, express) => {
     if (/https?:\/\/192.168.(\d+)?.(\d+)?(:\d+)?\/?/.test(req.origin)) {
         next();
     } else {
-        res.status(402);
+        res.status(401);
         res.end();
     }
     });

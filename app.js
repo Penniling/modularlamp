@@ -30,7 +30,7 @@ const con = mysql.createConnection({
 
 require("./js/express/authentication")(app, con);
 require("./js/express/express")(app, express);
-require("./js/express/acounts")(app, con);
+require("./js/express/accounts")(app, con);
 require("./js/sql/sql")(con);
 require("./js/io/io")(io);
 

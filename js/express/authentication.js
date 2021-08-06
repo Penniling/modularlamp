@@ -1,18 +1,19 @@
 module.exports = (app, con) => {
     const Math = require("math")
+    const bcrypt = require("bcrypt")
 
     app.post("/login", (req, res) => {
-        if (!validateCred(req)) {res.status(402); res.end(); return};
+        if (!validateCred(req.body)) {res.status(401); res.end(); return};
         token = [...generateToken()].join("");
-        /*
-        con.query('UPDATE `lamp`.`Users` SET `tokens`=[`tokens`,'+token+'] WHERE `name`="'+req.body.usr+'" AND `password`='+req.body.pwd+'', (error, results, fields) => {
-            if(error) throw error;
-            res.end()
+        con.query('UPDATE `Users`; SET `tokens` = JSON_ARRAY_APPEND(`tokens`, "$", CAST("?" as JSON)) WHERE `name` = ?;', ({"a": "b"}, req.body.usr), (error, results, fields) => {
+            if (error) return
         })
-        */
       });
-    function validateCred(req) {
-        if (req.body.usr == "test" && req.body.pwd == "1234") return true;
+    function validateCred(cred) {
+        con.query('SELECT `password` FROM `Users` WHERE `name`=?', (cred.usr), (error, results, fields) => {
+            if (error) return false;
+            return results[0] == bcrypt.hashSync(cred.pwd, process.env.salts)
+        })
     }
 
     function* generateToken() {

@@ -12,7 +12,7 @@ module.exports = (app, con) => {
     function validateCred(cred) {
         con.query('SELECT `password` FROM `Users` WHERE `name`=?', (cred.usr), (error, results, fields) => {
             if (error) return false;
-            return results[0] == bcrypt.hashSync(cred.pwd, 12)
+            return results[0] == bcrypt.hashSync(cred.pwd, parseInt(process.env.salts))
         })
     }
 

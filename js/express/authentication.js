@@ -21,7 +21,7 @@ module.exports = (app, con) => {
                 console.log(results[0]["password"])
                 const salt = bcrypt.genSaltSync(parseInt(process.env.salts))
                 console.log(bcrypt.hashSync(unescape(encodeURIComponent([cred.pwd])), salt))
-                resolve(results[0]["password"] == bcrypt.hashSync(unescape(encodeURIComponent([cred.pwd])), salt))
+                resolve(results[0]["password"] == bcrypt.hashSync(unescape(encodeURIComponent(cred.pwd)), salt))
             })
         })
     }

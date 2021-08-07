@@ -18,11 +18,7 @@ module.exports = (app, con) => {
         return new Promise((resolve, reject) => {
             con.query('SELECT `password` FROM `Users` WHERE `name`=?', [cred.usr,], (error, results, fields) => {
                 if (error) reject();
-                console.log(results[0]["password"])
-                const salt = bcrypt.genSaltSync(parseInt(process.env.salts))
-                console.log(bcrypt.hashSync(unescape(encodeURIComponent("abc")), salt))
-                console.log(bcrypt.hashSync(unescape(encodeURIComponent("abc")), salt))
-                resolve(results[0]["password"] == bcrypt.hashSync(unescape(encodeURIComponent("abc")), salt))
+                resolve(bcrypt.compare(cred.pwd, results[0]["password"]))
             })
         })
     }

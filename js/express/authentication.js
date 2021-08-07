@@ -18,9 +18,9 @@ module.exports = (app, con) => {
         return new Promise((resolve, reject) => {
             con.query('SELECT `password` FROM `Users` WHERE `name`=?', [cred.usr,], (error, results, fields) => {
                 if (error) reject();
-                console.log(results)
-                console.log(bcrypt.hashSync(cred.pwd, parseInt(process.env.salts)))
-                resolve(results[0] == bcrypt.hashSync(cred.pwd, parseInt(process.env.salts)))
+                console.log(results["pasword"])
+                console.log(bcrypt.hashSync(cred.pwd, bcrypt.genSaltSync(parseInt(process.env.salts))))
+                resolve(results["password"] == bcrypt.hashSync(cred.pwd, bcrypt.genSaltSync(parseInt(process.env.salts))))
             })
         })
     }

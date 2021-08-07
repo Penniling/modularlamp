@@ -1,3 +1,5 @@
+const { json } = require("body-parser");
+
 module.exports = (app, con) => {
     const Math = require("math")
     const bcrypt = require("bcrypt")
@@ -7,7 +9,7 @@ module.exports = (app, con) => {
             if (!valid) {res.status(401); res.end(); return};
             console.log(3)
             token = [...generateToken()].join("");
-            con.query('UPDATE `Users`; SET `tokens` = JSON_ARRAY_APPEND(`tokens`, "$", CAST(? as JSON)) WHERE `name` = ?;', [{"a": "b"}, req.body.usr], (error, results, fields) => {
+            con.query('UPDATE `Users`; SET `tokens` = JSON_ARRAY_APPEND(`tokens`, "$", CAST(? as JSON)) WHERE `name` = ?;', [JSON.stringify({"a": "b"}), req.body.usr], (error, results, fields) => {
                 console.log(4)
                 if (error) console.log(error)
                 res.status(200)

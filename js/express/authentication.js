@@ -19,8 +19,9 @@ module.exports = (app, con) => {
             con.query('SELECT `password` FROM `Users` WHERE `name`=?', [cred.usr,], (error, results, fields) => {
                 if (error) reject();
                 console.log(results[0])
-                console.log(bcrypt.hashSync(cred.pwd, bcrypt.genSaltSync(parseInt(process.env.salts))))
-                resolve(results[0] == bcrypt.hashSync(cred.pwd, bcrypt.genSaltSync(parseInt(process.env.salts))))
+                const salt = bcrypt.genSaltSync(parseInt(process.env.salts))
+                console.log(bcrypt.hashSync(cred.pwd, salt))
+                resolve(results[0] == bcrypt.hashSync(cred.pwd, salt))
             })
         })
     }

@@ -6,8 +6,10 @@ module.exports = (app, con) => {
         validateCred(req.body).then((valid) => {
             if (!valid) {res.status(401); res.end(); return};
             token = [...generateToken()].join("");
-            con.query('UPDATE `Users`; SET `tokens` = JSON_ARRAY_APPEND(`tokens`, $, CAST("?" as JSON)) WHERE `name` = ?;', ({"a": "b"}, req.body.usr), (error, results, fields) => {
+            con.query('UPDATE `Users`; SET `tokens` = JSON_ARRAY_APPEND(`tokens`, $, CAST("?" as JSON)) WHERE `name` = ?;', [{"a": "b"}, req.body.usr], (error, results, fields) => {
                 if (error) return
+                res.status(200)
+                res.end()
             })
         }).catch(() => {
             res.status(500)

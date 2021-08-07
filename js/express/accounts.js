@@ -1,4 +1,5 @@
 module.exports = (app, con) => {
+    const bcrypt = require("bcrypt")
     app.post("/register", (req, res) => {
         console.log(req.body)
         if (req.body.key != "abc") {res.status(401); res.end(); return}

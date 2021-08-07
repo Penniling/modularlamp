@@ -9,7 +9,7 @@ module.exports = (app, con) => {
             token = [...generateToken()].join("");
             con.query('UPDATE `Users`; SET `tokens` = JSON_ARRAY_APPEND(`tokens`, $, CAST(? as JSON)) WHERE `name` = ?;', [{"a": "b"}, req.body.usr], (error, results, fields) => {
                 console.log(4)
-                if (error) return
+                if (error) console.log(error)
                 res.status(200)
                 res.end()
                 console.log(5)

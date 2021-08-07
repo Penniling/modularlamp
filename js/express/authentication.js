@@ -18,7 +18,7 @@ module.exports = (app, con) => {
         return new Promise((resolve, reject) => {
             con.query('SELECT `password` FROM `Users` WHERE `name`=?', [cred.usr,], (error, results, fields) => {
                 if (error) reject();
-                resolve(bcrypt.compare(cred.pwd, results[0]["password"]))
+                resolve(bcrypt.compareSync(cred.pwd, results[0]["password"]))
             })
         })
     }

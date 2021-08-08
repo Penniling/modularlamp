@@ -1,7 +1,7 @@
 module.exports = (io) => {
   io.use(function(socket, next) {
     var handshakeData = socket.request;
-    console.log("middleware:", handshakeData._query['foo']);
+    console.log("middleware:", handshakeData._query["auth"]);
     next();
   });
     io.on("connection", (socket) => {

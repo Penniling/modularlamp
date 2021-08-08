@@ -13,7 +13,7 @@ module.exports = (app, con) => {
                 console.log(4)
                 if (error) console.log(error)
                 res.status(200)
-                res.end()
+                res.send(token)
                 console.log(5)
             })
         }).catch(() => {

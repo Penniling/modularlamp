@@ -1,10 +1,9 @@
 module.exports = (io) => {
-  io.use((socket, next) => {
-    const token = socket.handshake.auth.token;
-    if(token == "abc") {
-      next()
-    }
-  })
+  io.use(function(socket, next) {
+    var handshakeData = socket.request;
+    console.log("middleware:", handshakeData._query['foo']);
+    next();
+  });
     io.on("connection", (socket) => {
         console.info(`Client connected [id=${socket.id}]`);
         socket.emit("hello", "moin");

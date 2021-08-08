@@ -7,14 +7,11 @@ module.exports = (app, con) => {
     app.post("/login", (req, res) => {
         validateCred(req.body).then((valid) => {
             if (!valid) {res.status(401); res.end(); return};
-            console.log(3)
             token = [...generateToken()].join("");
             con.query('UPDATE `Users` SET `tokens` = JSON_ARRAY_APPEND(`tokens`, "$", ?) WHERE `name` = ?', [token, req.body.usr], (error, results, fields) => {
-                console.log(4)
                 if (error) console.log(error)
                 res.status(200)
                 res.send(token)
-                console.log(5)
             })
         }).catch(() => {
             res.status(500)
@@ -25,9 +22,8 @@ module.exports = (app, con) => {
         return new Promise((resolve, reject) => {
             con.query('SELECT `password` FROM `Users` WHERE `name`=?', [cred.usr,], (error, results, fields) => {
                 if (error) reject();
-                console.log(1)
+                console.log(results)
                 resolve(bcrypt.compareSync(cred.pwd, results[0]["password"]))
-                console.log(2)
             })
         })
     }

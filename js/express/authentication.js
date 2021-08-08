@@ -34,7 +34,7 @@ module.exports = (app, con) => {
 
     function* generateToken() {
         const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_".split("");
-        const len = 100;
+        const len = 500;
     
         for(var i = 0; i < len; i++) {
             yield chars[ Math.floor( Math.random() * chars.length ) ];

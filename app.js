@@ -1,4 +1,4 @@
-var bodyParser = require('body-parser')
+const bodyParser = require('body-parser')
 const socketio = require("socket.io");
 const express = require("express");
 const mysql = require("mysql");

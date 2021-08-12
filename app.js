@@ -19,10 +19,10 @@ function createAppServer() {
 
   server.listen(80, "192.168.2.135"); 
 
-  return io, app
+  return io, app;
 }
 
-const appIO, appExpress = createAppServer();
+const [appIO, appExpress] = createAppServer();
 
 const con = mysql.createConnection({
     host: "localhost",

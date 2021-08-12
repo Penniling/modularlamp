@@ -5,20 +5,24 @@ const mysql = require("mysql");
 const http = require("http");
 require("dotenv").config();
 
-const app = express();
-app.use(bodyParser.json())
-const server = http.createServer(app);
+function createAppServer() {
+  const app = express();
+  app.use(bodyParser.json())
+  const server = http.createServer(app);
+  
+  const io = socketio(server, {
+    cors: {
+      origin: "*",
+      methods: ["GET", "POST", "OPTIONS", "DELETE", "PUT"],
+    },
+  });
 
-app.get("/", (req, res) => {
-  res.send("hello")
-})
+  server.listen(80, "192.168.2.135"); 
 
-const io = socketio(server, {
-  cors: {
-    origin: "*",
-    methods: ["GET", "POST", "OPTIONS", "DELETE", "PUT"],
-  },
-});
+  return io, app
+}
+
+const appIO, appExpress = createAppServer();
 
 const con = mysql.createConnection({
     host: "localhost",
@@ -28,10 +32,8 @@ const con = mysql.createConnection({
     
 })
 
-require("./js/express/authentication")(app, con);
-require("./js/express/express")(app, express);
-require("./js/express/accounts")(app, con);
+require("./js/express/authentication")(appIO, con);
+require("./js/express/express")(appIO, appExpress);
+require("./js/express/accounts")(appIO, con);
 require("./js/sql/sql")(con);
-require("./js/io/io")(io);
-
-server.listen(80, "192.168.2.135");
+require("./js/io/io")(appIO);

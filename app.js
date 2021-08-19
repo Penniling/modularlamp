@@ -7,7 +7,6 @@ require("dotenv").config();
 
 function createAppServer() {
   const app = express();
-  app.use(bodyParser.json())
   const server = http.createServer(app);
   
   const io = socketio(server, {

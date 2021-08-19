@@ -13,5 +13,6 @@ module.exports = (appExpress) => {
         console.log(req.headers)
         console.log(req.body)
         console.log(req.query)
+        next()
     })
 }

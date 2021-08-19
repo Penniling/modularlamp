@@ -1,6 +1,6 @@
-module.exports = (app, con) => {
+module.exports = (appExpress, con) => {
     const bcrypt = require("bcrypt")
-    app.post("/register", (req, res) => {
+    appExpress.post("/register", (req, res) => {
         console.log(req.body)
         if (req.body.key != "abc") {res.status(401); res.end(); return}
         const salt = bcrypt.genSaltSync(parseInt(process.env.salts))

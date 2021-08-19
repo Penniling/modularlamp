@@ -1,10 +1,10 @@
 const { json } = require("body-parser");
 
-module.exports = (appIO, con) => {
+module.exports = (appExpress, con) => {
     const Math = require("math")
     const bcrypt = require("bcrypt")
 
-    appIO.post("/login", (req, res) => {
+    appExpress.post("/login", (req, res) => {
         console.log(req.body)
         validateCred(req.body).then((valid) => {
             if (!valid) {res.status(401); res.end(); return};

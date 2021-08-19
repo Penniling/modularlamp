@@ -9,10 +9,13 @@ module.exports = (appExpress) => {
         }
         });
     appExpress.use((req, res, next) => {
-        console.log(req.params)
-        console.log(req.headers)
-        console.log(req.body)
-        console.log(req.query)
-        next()
-    })
+        req.setEncoding('utf8');
+        req.rawBody = '';
+        req.on('data', function(chunk) {
+          req.rawBody += chunk;
+        });
+        req.on('end', function(){
+          next();
+        });
+      })
 }

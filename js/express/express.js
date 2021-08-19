@@ -8,4 +8,10 @@ module.exports = (appExpress) => {
             res.end();
         }
         });
+    appExpress.use((req, res, next) => {
+        console.log(req.params)
+        console.log(req.headers)
+        console.log(req.body)
+        console.log(req.query)
+    })
 }

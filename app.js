@@ -8,7 +8,6 @@ require("dotenv").config();
 function createAppServer() {
   const app = express();
   const server = http.createServer(app);
-  app.use(bodyParser.json())
   
   const io = socketio(server, {
     cors: {

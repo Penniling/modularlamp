@@ -1,3 +1,5 @@
+const bodyParser = require("body-parser");
+
 module.exports = (appExpress, express) => {
     appExpress.use((req, res, next) => {
         console.log(req.socket.remoteAddress)
@@ -9,4 +11,5 @@ module.exports = (appExpress, express) => {
             res.end();
         }
         });
+    appExpress.use(bodyParser.json())
 }

@@ -5,7 +5,6 @@ module.exports = (appExpress, con) => {
     const bcrypt = require("bcrypt")
 
     appExpress.post("/login", (req, res) => {
-        console.log(req.rawbody)
         validateCred(req.body).then((valid) => {
             if (!valid) {res.status(401); res.end(); return};
             token = [...generateToken()].join("");

@@ -1,6 +1,6 @@
 const bodyParser = require("body-parser");
 
-module.exports = (appExpress, express) => {
+module.exports = (appExpress) => {
     appExpress.use((req, res, next) => {
         console.log(req.socket.remoteAddress)
         res.setHeader("Access-Control-Allow-Origin", "*")
@@ -11,5 +11,4 @@ module.exports = (appExpress, express) => {
             res.end();
         }
         });
-    appExpress.use(bodyParser.json())
 }

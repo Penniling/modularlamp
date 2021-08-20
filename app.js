@@ -8,6 +8,7 @@ require("dotenv").config();
 function createAppServer() {
   const app = express();
   const server = http.createServer(app);
+  app.use(bodyParser.json())
   
   const io = socketio(server, {
     cors: {
@@ -33,6 +34,6 @@ const con = mysql.createConnection({
 
 require("./js/express/authentication")(appExpress, con);
 require("./js/express/accounts")(appExpress, con);
-require("./js/express/express")(appExpress, express);
+require("./js/express/express")(appExpress);
 require("./js/io/app_io")(appIO);
 require("./js/sql/sql")(con);

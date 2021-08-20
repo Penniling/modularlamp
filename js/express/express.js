@@ -1,5 +1,5 @@
-module.exports = (appExpress) => {
-    appExpress.use(appExpress.json())
+module.exports = (appExpress, express) => {
+    appExpress.use(express.json())
     appExpress.use((req, res, next) => {
         console.log(req.socket.remoteAddress)
         if (/192.168.(\d+)?.(\d+)?(:\d+)?\/?/.test(req.socket.remoteAddress)) {

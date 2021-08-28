@@ -3,7 +3,6 @@ const bodyParser = require("body-parser");
 module.exports = (appExpress) => {
     appExpress.use((req, res, next) => {
         console.log(req.socket.remoteAddress)
-        res.setHeader("Access-Control-Allow-Origin", "*")
         if (/192.168.(\d+)?.(\d+)?(:\d+)?\/?/.test(req.socket.remoteAddress)) {
             next();
         } else {

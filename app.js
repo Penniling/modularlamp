@@ -22,7 +22,25 @@ function createAppServer() {
   return [io, app];
 }
 
+function createLampServer() {
+  const app = express();
+  const server = http.createServer(app);
+  app.use(bodyParser.json())
+  
+  const io = socketio(server, {
+    cors: {
+      origin: "*",
+      methods: ["GET", "POST", "OPTIONS", "DELETE", "PUT"],
+    },
+  });
+  
+  server.listen(8080, "192.168.2.135"); 
+  
+  return [io, app];
+}
+
 const [appIO, appExpress] = createAppServer();
+const [lampIO, lampExpress] = createLampServer();
 
 const con = mysql.createConnection({
     host: "localhost",

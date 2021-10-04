@@ -42,20 +42,16 @@ function createLampServer() {
 const [appIO, appExpress] = createAppServer();
 const [lampIO, lampExpress] = createLampServer();
 
-lampIO.on("connection", (socket) => {
-  socket.emit("reply", "Hello Esp from Raspberry Pi");
-})
-
 const con = mysql.createConnection({
     host: "localhost",
     user: "lamp",
     password: process.env.mysqlPwd, 
     database: "lamp"
-    
 })
 
 require("./js/express/authentication")(appExpress, con);
 require("./js/express/accounts")(appExpress, con);
 require("./js/express/express")(appExpress);
+require("./js/io/lamp_io")(lampIO);
 require("./js/io/app_io")(appIO);
 require("./js/sql/sql")(con);

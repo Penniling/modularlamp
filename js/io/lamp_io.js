@@ -1,12 +1,21 @@
 module.exports = (lampIO) => {
-    lampIO.on("connection", (socket) => {
-          console.info(`Client connected [id=${socket.id}] to Lamp IO`);
-          socket.emit("hello", "moin");
-          socket.on("data", (_) => {
-            console.log(_);
-          });
-          socket.on("disconnect", () => {
-            console.info(`Client gone [id=${socket.id}]`);
-          });
-        });
+
+  function lampUpdater(socket) {
+    var n = 0
+    while(true) {
+      setTimeout(() => {
+        socket.emit("Hello " + n)
+        n++
+      }, 5000)
+    }
+  }
+
+  lampIO.on("connection", (socket) => {
+    console.info(`Lamp connected [id=${socket.id}]`);
+    socket.emit("hello", "moin");
+    socket.on("disconnect", () => {
+      console.info(`Lamp gone [id=${socket.id}]`);
+    });
+
+  });
 }

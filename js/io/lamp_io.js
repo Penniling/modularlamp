@@ -13,9 +13,9 @@ module.exports = (lampIO) => {
   lampIO.on("connection", (socket) => {
     console.info(`Lamp connected [id=${socket.id}]`);
     socket.emit("hello", "moin");
+    lampUpdater(socket)
     socket.on("disconnect", () => {
       console.info(`Lamp gone [id=${socket.id}]`);
     });
-
   });
 }

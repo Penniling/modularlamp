@@ -1,5 +1,5 @@
 module.exports = (lampIO) => {
-  lampIOp.on("connection", (socket) => {
+  lampIO.on("connection", (socket) => {
     console.info(`Lamp connected [id=${socket.id}]`);
     socket.emit("hello", "moin");
     var i = 0;

@@ -3,12 +3,16 @@ const socketio = require("socket.io");
 const express = require("express");
 const mysql = require("mysql");
 const http = require("http");
+const cors = require("cors")
 require("dotenv").config();
 
 function createAppServer() {
   const app = express();
   const server = http.createServer(app);
   app.use(bodyParser.json())
+  app.use(cors({
+    origin: "*",
+  }))
   
   const io = socketio(server, {
     cors: {

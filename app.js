@@ -9,7 +9,7 @@ require("dotenv").config();
 function createAppServer() {
   const app = express();
   const server = http.createServer(app);
-  app.use(bodyParser.json())
+  app.use(express.json())
   app.use(cors({
     origin: "*",
   }))
@@ -29,7 +29,7 @@ function createAppServer() {
 function createLampServer() {
   const app = express();
   const server = http.createServer(app);
-  app.use(bodyParser.json())
+  app.use(express.json())
   
   const io = socketio(server, {
     cors: {

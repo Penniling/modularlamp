@@ -1,5 +1,3 @@
-const bodyParser = require("body-parser");
-
 module.exports = (appExpress) => {
     appExpress.use((req, res, next) => {
         console.log(req.socket.remoteAddress)

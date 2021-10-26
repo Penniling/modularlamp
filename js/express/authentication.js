@@ -1,5 +1,3 @@
-const { json } = require("body-parser");
-
 module.exports = (appExpress, con) => {
     const Math = require("math")
     const bcrypt = require("bcrypt")
@@ -19,6 +17,7 @@ module.exports = (appExpress, con) => {
         })
       });
     function validateCred(cred) {
+        console.log(cred)
         return new Promise((resolve, reject) => {
             con.query('SELECT `password` FROM `Users` WHERE `name`=?', [cred.usr,], (error, results, fields) => {
                 if (error) reject();

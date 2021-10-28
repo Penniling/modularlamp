@@ -4,8 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon npm run app.js",
-    "start1": "nodemon npm run testclient.js"
+    "start": "nodemon npm run src/app.js"
   },
   "author": "Penniling",
   "license": "MIT",

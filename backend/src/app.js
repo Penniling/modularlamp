@@ -48,7 +48,7 @@ const [lampIO, lampExpress] = createLampServer();
 
 const con = mysql.createConnection({
     host: "localhost",
-    user: "lamp",
+    user: "bridge",
     password: process.env.mysqlPwd, 
     database: "lamp"
 })

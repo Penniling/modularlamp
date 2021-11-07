@@ -47,7 +47,7 @@ const [appIO, appExpress] = createAppServer();
 const [lampIO, lampExpress] = createLampServer();
 
 const con = mysql.createConnection({
-    host: "localhost",
+    host: "192.168.2.135",
     user: "bridge",
     password: process.env.mysqlPwd, 
     database: "lamp"

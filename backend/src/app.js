@@ -1,4 +1,3 @@
-const bodyParser = require('body-parser')
 const socketio = require("socket.io");
 const express = require("express");
 const mysql = require("mysql");
@@ -48,7 +47,7 @@ const [lampIO, lampExpress] = createLampServer();
 
 const con = mysql.createConnection({
     host: "192.168.2.135",
-    user: "bridge",
+    user: "root",
     password: process.env.mysqlPwd, 
     database: "lamp"
 })

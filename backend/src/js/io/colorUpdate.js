@@ -5,7 +5,7 @@ module.exports = (appIO, lampIO) => {
         socket.on("updateLamp", (lamp) => {
           console.log(lamp)
           if(isValid(lamp)) {
-            lampIO.emit(lamp)
+            lampIO.emit(lamp["color"])
           }
         })
         socket.on("disconnect", () => {

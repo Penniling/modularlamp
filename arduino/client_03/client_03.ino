@@ -38,7 +38,6 @@ void socketIOEvent(socketIOmessageType_t type, uint8_t * payload, size_t length)
     case sIOtype_EVENT:
       Serial.print("[IOc] Get event: ");
       Serial.println((char*) payload);
-      Serial.println((char*) payload[2]);
       
       break;
     case sIOtype_ACK:

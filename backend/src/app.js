@@ -54,7 +54,7 @@ const con = mysql.createConnection({
 
 require("./js/express/authentication")(appExpress, con);
 require("./js/express/accounts")(appExpress, con);
-require("./js/io/colorUpdate")(lampIO, appIO);
+require("./js/io/colorUpdate")(appIO, lampIO);
 require("./js/express/express")(appExpress);
 require("./js/io/lamp_io")(lampIO);
 require("./js/io/app_io")(appIO);

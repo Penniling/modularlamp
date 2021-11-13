@@ -134,35 +134,6 @@ unsigned long messageTimestamp = 0;
 void loop() 
 {
   socketIO.loop();
-
-  uint64_t now = millis();
-
-  if (now - messageTimestamp > 30000) 
-  {
-    messageTimestamp = now;
-
-    // creat JSON message for Socket.IO (event)
-    DynamicJsonDocument doc(1024);
-    JsonArray array = doc.to<JsonArray>();
-
-    // add evnet name
-    // Hint: socket.on('event_name', ....
-    array.add("data");
-
-    // add payload (parameters) for the event
-    JsonObject param1 = array.createNestedObject();
-    param1["now"]     = (uint32_t) now;
-
-    // JSON to String (serializion)
-    String output;
-    serializeJson(doc, output);
-
-    // Send event
-    socketIO.sendEVENT(output);
-
-    // Print JSON for debugging
-    Serial.println(output);
-  }
 }
 
 void setColor(int led, int redValue, int greenValue, int blueValue)

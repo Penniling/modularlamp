@@ -8,7 +8,7 @@ module.exports = (appIO, lampIO) => {
             var parsedLamp = JSON.parse(lamp);
             setTimeout(() => {
               lampIO.emit(parsedLamp["color"])
-            }, parsedLamp["delay"])
+            }, parsedLamp["delay"]*1000)
           }
         })
         socket.on("disconnect", () => {

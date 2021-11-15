@@ -5,8 +5,10 @@ module.exports = (appIO, lampIO) => {
         socket.on("updateLamp", (lamp) => {
           console.log(lamp)
           if(isValid(lamp)) {
-            var parsedLamp = JSON.parse(lamp)
-            lampIO.emit(parsedLamp["color"])
+            var parsedLamp = JSON.parse(lamp);
+            setTimeout(() => {
+              lampIO.emit(parsedLamp["color"])
+            }, parsedLamp["delay"])
           }
         })
         socket.on("disconnect", () => {

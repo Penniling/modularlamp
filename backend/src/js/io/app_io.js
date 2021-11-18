@@ -1,7 +1,7 @@
 module.exports = (appIO, lampIO, con) => {
   appIO.use((socket, next) => {
     var token = socket.request.query.token;
-    console.log(token)
+    console.log(token + "abcd")
     if (checkAuthToken(token, con)) {
       next();
     }

@@ -1,6 +1,6 @@
 module.exports = (appIO, lampIO) => {
     appIO.on("connection", (socket) => {
-        console.info(`Client connected [id=${socket.id}] to App io`);
+        console.info(`Client connected [id=${socket.handshake.address}] to App io`)
         socket.emit("hello", "moin");
         socket.on("updateLamp", (lamp) => {
           console.log(lamp)

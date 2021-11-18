@@ -1,6 +1,6 @@
 module.exports = (appIO, lampIO, con) => {
   appIO.use((socket, next) => {
-    console.log(socket.request)
+    console.log(socket.request._query.token)
     next()
   })
 }

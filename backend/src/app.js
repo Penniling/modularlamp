@@ -56,6 +56,6 @@ require("./js/express/authentication")(appExpress, con);
 require("./js/express/accounts")(appExpress, con);
 require("./js/io/colorUpdate")(appIO, lampIO);
 require("./js/express/express")(appExpress);
-require("./js/io/app_io")(appIO, con);
+require("./js/io/app_io")(appIO, lampIO,con);
 require("./js/io/lamp_io")(lampIO);
 require("./js/sql/sql")(con);

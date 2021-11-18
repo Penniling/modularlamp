@@ -1,7 +1,7 @@
 var sendButton = document.getElementsByClassName("send")[0];
 // var colorPicker = document.getElementsByClassName("color")[0];
 
-var ioc = io("ws://192.168.2.135:80")
+var ioc = io("http://192.168.2.135:80")
 
 sendButton.addEventListener("click",() => {
     console.log("send")

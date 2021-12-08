@@ -52,8 +52,6 @@ const con = mysql.createConnection({
     database: "lamp"
 })
 
-require("./js/express/authentication")(appExpress, con);
-require("./js/express/accounts")(appExpress, con);
 require("./js/io/colorUpdate")(appIO, lampIO);
 require("./js/express/express")(appExpress);
 require("./js/io/app_io")(appIO, lampIO, con);

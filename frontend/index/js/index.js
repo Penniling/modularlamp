@@ -1,7 +1,12 @@
 var sendButton = document.getElementsByClassName("send")[0];
 // var colorPicker = document.getElementsByClassName("color")[0];
 
-var ioc = io("ws://192.168.2.135:80", {query: "token=abcd"})
+var creds = JSON.stringify({
+    "usr": "hello",
+    "pwd": "1234"
+})
+
+var ioc = io("ws://192.168.2.135:80", {query: "creds="+creds+""})
 
 sendButton.addEventListener("click",() => {
     console.log("send")

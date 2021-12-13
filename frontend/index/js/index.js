@@ -2,7 +2,7 @@ var sendButton = document.getElementsByClassName("send")[0];
 // var colorPicker = document.getElementsByClassName("color")[0];
 
 var creds = JSON.stringify({
-    "usr": "hello",
+    "usr": "jannis",
     "pwd": "1234"
 })
 

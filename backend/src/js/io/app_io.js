@@ -6,9 +6,9 @@ module.exports = (appIO, lampIO, con) => {
   })
 
   function validateCreds(creds) {
-    con.query('', (error, results, fields) => {
-
+    con.query('SELECT name FROM Users WHERE NAME="?" AND PASSWORD="?', [creds.name, creds.password], (error, results, fields) => {
+      console.log(results)
     })
     }
-
+    return
 }

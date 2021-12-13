@@ -2,15 +2,15 @@ module.exports = (appIO, lampIO, con) => {
   appIO.use((socket, next) => {
     var creds = JSON.parse(socket.request._query.creds)
     console.log(creds)
-    validateCreds(creds)
+    if (validateCreds(creds))
     next()
   })
 
-  function validateCreds(creds) {
+  async function validateCreds(creds) {
     con.query('SELECT name FROM Users WHERE NAME=? AND PASSWORD=?', [creds.usr, creds.pwd], (error, results, fields) => {
-      if (error) console.log(error)
-      console.log(results)
-    })
+      console.log(results[0]["name"])
+      if (results[0]["name"]) {
+          return 
+      }
     }
-    return
 }

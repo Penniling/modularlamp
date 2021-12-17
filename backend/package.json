@@ -2,9 +2,9 @@
   "name": "bridge_js",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "build/app.js",
   "scripts": {
-    "start": "nodemon npm run src/app.js"
+    "start": "nodemon npm run build/app.js"
   },
   "author": "Penniling",
   "license": "MIT",

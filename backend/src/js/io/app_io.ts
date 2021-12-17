@@ -17,9 +17,8 @@ export default (appIO, lampIO, con) => {
           console.log(error)
           reject(error)
         }
-        var oldHash = bcrypt.hash(result[0].password, 10)
-        console.log(oldHash)
-        if(result[0]?.password === creds.usr) {
+
+        if(bcrypt.compareSync(creds.pwd, result[0]?.password)) {
           resolve(creds.usr)
         }else {
           reject()

@@ -1,4 +1,4 @@
-module.exports = (appIO, lampIO) => {
+export default (appIO, lampIO) => {
     appIO.on("connection", (socket) => {
         socket.emit("hello", "moin");
         socket.on("updateLamp", (lamp) => {
